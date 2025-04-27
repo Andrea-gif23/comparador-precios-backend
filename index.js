@@ -5,19 +5,19 @@ const app = express();
 
 
 
-// Configuración básica
+
 app.use(express.json());
 const cors = require('cors'); 
 app.use(cors()); 
 const PORT = process.env.PORT || 3001;
 
-// Conexión a Supabase
+
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_KEY
 );
 
-// 12 PRODUCTOS DE EJEMPLO (actualízalos si quieres)
+// LOS PRODUCTOS LOS HE SACADO CON AYUDA DEL CHAT GPT PORUE ERAN MUCHISIMOS, LE PEDI QUE ME REPLICARA UN MODELO PARA TODOS.
 const products = [
   // ================== VERDURAS/FRUTAS (15 por supermercado) ==================
   // MERCADONA (1-15)
@@ -249,7 +249,7 @@ const products = [
 
 ];
 
-// Ruta raíz CORREGIDA
+
 app.get('/', (req, res) => {
   res.json({ 
     message: "API Comparador de Precios", 
@@ -260,12 +260,12 @@ app.get('/', (req, res) => {
   });
 });
 
-// Todos los productos
+
 app.get('/api/products', (req, res) => {
   res.json(products);
 });
 
-// Iniciar servidor
+
 app.listen(PORT, () => {
   console.log(`✅ Backend funcionando en http://localhost:${PORT}`);
 });
